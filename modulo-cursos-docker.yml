@@ -1,4 +1,4 @@
-# PERFIL docker (produccion): base MySQL, RabbitMQ y registry por nombre de servicio.
+# PERFIL docker (produccion): base MySQL PROPIA de este microservicio, RabbitMQ y registry por nombre de servicio.
 # Las claves vienen de variables de entorno (docker-compose + archivo .env), no se escriben aca.
 server:
   port: 8083
@@ -33,10 +33,10 @@ spring:
         # un mensaje rechazado NO vuelve a la cola (evita el loop infinito)
         default-requeue-rejected: false
   datasource:
-    url: jdbc:mysql://mysql:3306/cursosdb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    url: jdbc:mysql://cursos-db:3306/cursos_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: ${MYSQL_ROOT_PASSWORD}
+    username: cursos_user
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update

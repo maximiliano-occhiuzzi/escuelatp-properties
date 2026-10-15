@@ -1,4 +1,4 @@
-# PERFIL docker (produccion): base MySQL, RabbitMQ y registry por nombre de servicio.
+# PERFIL docker (produccion): base MySQL PROPIA de este microservicio, RabbitMQ y registry por nombre de servicio.
 # Las claves vienen de variables de entorno (docker-compose + archivo .env), no se escriben aca.
 server:
   port: 8084
@@ -26,10 +26,10 @@ spring:
     username: ${RABBITMQ_USER}
     password: ${RABBITMQ_PASSWORD}
   datasource:
-    url: jdbc:mysql://mysql:3306/alumnosdb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    url: jdbc:mysql://alumno-db:3306/alumnos_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: ${MYSQL_ROOT_PASSWORD}
+    username: alumno_user
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update

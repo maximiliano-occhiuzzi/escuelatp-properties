@@ -37,4 +37,5 @@ eureka:
     service-url:
       defaultZone: http://registry:8761/eureka/
   instance:
+    prefer-ip-address: true
     lease-renewal-interval-in-seconds: 10
